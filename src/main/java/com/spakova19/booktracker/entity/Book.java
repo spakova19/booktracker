@@ -20,6 +20,12 @@ public class Book {
 
     public Book() {}
 
+    public Book(String title, int numberOfPages, String isbn) {
+        this.title = title;
+        this.numberOfPages = numberOfPages;
+        this.isbn = isbn;
+    }
+
     public Long getId() {
         return id;
     }

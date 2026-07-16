@@ -2,7 +2,6 @@ package com.spakova19.booktracker.controller;
 
 import com.spakova19.booktracker.dto.CreateBookRequest;
 import com.spakova19.booktracker.entity.Book;
-import com.spakova19.booktracker.repository.BookRepository;
 import com.spakova19.booktracker.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +10,9 @@ import java.util.Optional;
 
 @RestController
 public class BookController {
-    private final BookRepository bookRepository;
     private final BookService bookService;
 
-    public BookController(BookRepository bookRepository, BookService bookService) {
-        this.bookRepository = bookRepository;
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
@@ -26,21 +23,21 @@ public class BookController {
 
     @GetMapping("/allBooks")
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return bookService.getAllBooks();
     }
 
     @GetMapping("/bookById/{id}")
     public Optional<Book> getBookById(@PathVariable Long id) {
-        return bookRepository.findById(id);
+        return bookService.getBookById(id);
     }
 
     @GetMapping("/bookByTitle")
     public Optional<Book> getBookByTitle(@RequestParam String title) {
-        return bookRepository.findByTitle(title);
+        return bookService.getBookByTitle(title);
     }
 
     @GetMapping("/bookByIsbn")
     public Optional<Book> getBookByIsbn(@RequestParam String isbn) {
-        return  bookRepository.findByIsbn(isbn);
+        return  bookService.getBookByIsbn(isbn);
     }
 }

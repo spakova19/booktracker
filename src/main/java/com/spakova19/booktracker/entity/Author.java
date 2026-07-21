@@ -3,6 +3,7 @@ package com.spakova19.booktracker.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 public class Author {

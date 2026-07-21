@@ -33,8 +33,16 @@ public class BookService {
         return bookRepository.save(result);
     }
 
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
+    }
+
+    public List<Book> getBooksByAuthorId(Long id) {
+        return bookRepository.findBooksByAuthorId(id);
     }
 
     public Optional<Book> getBookById(Long id) {

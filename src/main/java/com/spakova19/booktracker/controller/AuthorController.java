@@ -20,6 +20,11 @@ public class AuthorController {
         return authorService.createAuthor(author);
     }
 
+    @DeleteMapping("/deleteAuthorById/{id}")
+    public void deleteAuthorById(@PathVariable Long id) {
+        authorService.deleteAuthorById(id);
+    }
+
     @GetMapping("/allAuthors")
     public List<Author> getAllAuthors() {
         return authorService.getAllAuthors();

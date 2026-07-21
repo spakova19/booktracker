@@ -2,6 +2,7 @@ package com.spakova19.booktracker.controller;
 
 import com.spakova19.booktracker.dto.CreateBookRequest;
 import com.spakova19.booktracker.entity.Book;
+import com.spakova19.booktracker.repository.BookRepository;
 import com.spakova19.booktracker.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +22,19 @@ public class BookController {
         return bookService.createBook(book);
     }
 
+    @DeleteMapping("/deleteBookById/{id}")
+    public void deleteBookById(@PathVariable Long id) {
+        bookService.deleteBookById(id);
+    }
+
     @GetMapping("/allBooks")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
+    }
+
+    @GetMapping("/booksByAuthorId/{id}")
+    public List<Book> getBooksByAuthorId(@PathVariable Long id) {
+        return bookService.getBooksByAuthorId(id);
     }
 
     @GetMapping("/bookById/{id}")
